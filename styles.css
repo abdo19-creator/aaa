@@ -1,0 +1,239 @@
+/* تنسيق عام */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url('photo_2024-10-20_05-21-31.jpg') no-repeat center center/cover; 
+    color: #34e89e;
+    line-height: 1.8;
+}
+
+/* شريط التنقل */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20%; /* تعويض استخدام px بالوحدات النسبية */
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(-200px);
+    animation: fadeInAndAssemble 1s forwards 0.5s;
+}
+
+.navbar .logo img {
+    width: 10vw; /* الحفاظ على الحجم النسبي للصورة */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2vw;
+}
+
+.nav-links li a {
+    color: #34e89e;
+    text-decoration: none;
+    padding: 1vh 2vw; 
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    background-color: #34e89e;
+    color: #000;
+}
+
+/* الحاوية */
+.login-container {
+    position: relative;
+    z-index: 10;
+    background-color: rgba(16, 31, 18, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2vh 2vw;
+    width: 350px; 
+    text-align: center;
+    box-shadow: 0 15px 25px rgba(76, 175, 80, 0.37);
+    margin-top: 5vh; /* لتجنب التصادم مع العناصر الأخرى */
+    left: 50%; /* استخدام المركز الأفقي */
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInAndAssemble 1s forwards 1.5s;
+}
+
+h2 {
+    font-size: 2.5vh;
+    margin-bottom: 2vh;
+    color: #34e89e;
+    opacity: 0;
+    animation: fadeIn 1s forwards 2s;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 2vh;
+    opacity: 0;
+    animation: fadeIn 1s forwards 2.5s;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1vh 2vw;
+    border: none;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #34e89e;
+    font-size: 1.5vh;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.input-group input:focus {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 1.2vh;
+    background-color: #34e89e;
+    border: none;
+    border-radius: 50px;
+    color: #000;
+    font-size: 2vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s forwards 3s;
+}
+
+.forgot-password {
+    margin-top: 1.2vh;
+    color: #34e89e;
+    font-size: 1.5vh;
+    opacity: 0;
+    animation: fadeIn 1s forwards 3.5s;
+}
+
+.alternative-login {
+    margin: 2vh 0;
+    opacity: 0;
+    animation: fadeIn 1s forwards 4s;
+}
+
+.alternative-login p {
+    color: #34e89e;
+    font-size: 1.5vh;
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5vh;
+}
+
+.social-btn {
+    padding: 1vh 2vw;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1.5vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.google {
+    background-color: #db4437;
+}
+
+.twitter {
+    background-color: #1da1f2;
+}
+
+.social-btn:hover {
+    opacity: 0.8;
+}
+
+.language-selection {
+    margin-top: 2vh;
+    color: #34e89e;
+    opacity: 0;
+    animation: fadeIn 1s forwards 4.5s;
+}
+
+.language-selection select {
+    padding: 1vh;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    color: #34e89e;
+    outline: none;
+}
+
+/* الرسوم المتحركة */
+@keyframes fadeInAndAssemble {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* استجابة */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .login-container {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo img {
+        width: 15vw;
+    }
+
+    .login-container {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    h2 {
+        font-size: 4vw;
+    }
+
+    .login-btn, .social-btn {
+        font-size: 4vw;
+    }
+}
